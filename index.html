@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Feliz aniversário!</title>
+        <meta name="description" content="Para você sinhô😊">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main id="main">
+            <h1 class="title">Olá, bem vindo(a), Daniel/Papai!</h1>
+            <p>Para um pai, esposo, amigo, filho, servo de Deus, <b>CHEFE</b> e muito mais</p>
+            <button class="start" onclick="start()">[Iniciar projeto]</button>
+        </main>
+
+        <section id="inicio">
+           <p class="info">
+    Hoje é um dia especial. São 43 anos desde que você chegou ao mundo, e cada um deles deixou sua marca em quem está ao seu redor.  
+    Obrigado por ser o nosso pai, por cuidar, ensinar e estar presente em todos os momentos.  
+    Que essa nova fase venha cheia de saúde, paz e muitas conquistas pra você (e todos nós também hehe).
+    <br>
+    <b>FELIZ ANIVERSÁRIO!</b>
+</p>
+            <div class="carousel">
+    <div class="track" id="track">
+        <img src="foto1.png">
+        <img src="foto2.png">
+        <img src="foto3.png">
+        <img src="foto4.png">
+        <img src="foto5.png">
+    </div>
+</div>
+        </section>
+
+        <section id="final">
+    <h1 class="final-title">FELIZ ANIVERSÁRIO</h1>
+    <img class="final-img" src="final.png">
+</section>
+
+        <script>
+            function start() {
+    const main = document.getElementById('main');
+    const section = document.getElementById('inicio');
+    const body = document.body;
+
+    body.style.background = 'linear-gradient(145deg, #00001f, #000000)';
+    main.classList.add('hide');
+
+    setTimeout(() => {
+        main.style.display = 'none';
+        section.classList.add('show');
+        section.scrollIntoView({ behavior: 'smooth' });
+    }, 600);
+}
+
+    const track = document.getElementById('track');
+const imgs = Array.from(track.children);
+
+const section = document.getElementById('inicio');
+const finalScreen = document.getElementById('final');
+
+let index = 0;
+let started = false;
+let interval = null;
+let speed = 2000;
+
+function update() {
+    imgs.forEach(img => img.classList.remove('active'));
+    imgs[index].classList.add('active');
+
+    const imgWidth = imgs[index].offsetWidth + 20;
+    const offset = index * imgWidth;
+
+    track.style.transform = `translateX(${-offset}px)`;
+}
+
+function next() {
+    if (!started) return;
+
+    index++;
+
+    if (index >= imgs.length) {
+        slowDown();
+        return;
+    }
+
+    update();
+}
+
+function startCarousel() {
+    started = true;
+    interval = setInterval(next, speed);
+}
+
+function slowDown() {
+    clearInterval(interval);
+
+    let currentSpeed = 2000;
+    let steps = 3;
+
+    const slowInterval = setInterval(() => {
+        currentSpeed += 400;
+
+        clearInterval(interval);
+        interval = setInterval(next, currentSpeed);
+
+        steps--;
+
+        if (steps <= 0) {
+            clearInterval(slowInterval);
+            endCarousel();
+        }
+    }, 500);
+}
+
+function endCarousel() {
+    clearInterval(interval);
+
+    section.style.opacity = 0;
+    section.style.transform = "scale(1.1)";
+
+    setTimeout(() => {
+        section.style.display = "none";
+        finalScreen.classList.add("show");
+    }, 800);
+}
+
+update();
+
+setTimeout(() => {
+    startCarousel();
+}, 2000);
+        </script>
+    </body>
+</html>
