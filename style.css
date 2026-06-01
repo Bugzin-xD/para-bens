@@ -164,3 +164,95 @@ section.show {
 
     box-shadow: 0 0 40px rgba(0, 140, 255, 0.3);
 }
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 38px;
+    }
+
+    .start {
+        font-size: 20px;
+        padding: 10px 22px;
+    }
+
+    .carousel {
+        height: 280px;
+    }
+
+    .track {
+        gap: 14px;
+    }
+
+    .track img {
+        width: 160px;
+        height: 210px;
+        border-radius: 15px;
+    }
+
+    .track img.active {
+        transform: scale(1);
+    }
+
+    .info {
+        width: 88%;
+        padding: 22px;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .final-title {
+        font-size: 42px;
+    }
+
+    .final-img {
+        width: 240px;
+        height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 30px;
+    }
+
+    .start {
+        font-size: 18px;
+        padding: 9px 20px;
+    }
+
+    .carousel {
+        height: 240px;
+    }
+
+    .track {
+        gap: 10px;
+    }
+
+    .track img {
+        width: 125px;
+        height: 170px;
+        border-radius: 12px;
+    }
+
+    .info {
+        width: 90%;
+        padding: 18px;
+        font-size: 16px;
+        line-height: 1.45;
+        border-radius: 16px;
+    }
+
+    #final {
+        gap: 22px;
+    }
+
+    .final-title {
+        font-size: 34px;
+    }
+
+    .final-img {
+        width: 200px;
+        height: 270px;
+        border-radius: 16px;
+    }
+}
